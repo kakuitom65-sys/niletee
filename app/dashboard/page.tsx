@@ -372,13 +372,6 @@ export default function DashboardPage() {
               </Link>
 
               <Link
-                href="/requests"
-                className="px-3 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-sm font-medium transition"
-              >
-                🛒 Make Request
-              </Link>
-
-              <Link
                 href="/orders"
                 className="px-3 py-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/5 text-sm font-medium transition"
               >
@@ -438,13 +431,6 @@ export default function DashboardPage() {
             </Link>
 
             <Link
-              href="/requests"
-              className="whitespace-nowrap rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300"
-            >
-              🛒 Request
-            </Link>
-
-            <Link
               href="/orders"
               className="whitespace-nowrap rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-xs font-semibold text-slate-300"
             >
@@ -499,13 +485,6 @@ export default function DashboardPage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 mt-7">
-                <Link
-                  href="/requests"
-                  className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold shadow-xl shadow-blue-600/20 transition"
-                >
-                  ＋ Make a New Request
-                </Link>
-
                 <Link
                   href="/orders"
                   className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 font-semibold transition"
@@ -581,24 +560,7 @@ export default function DashboardPage() {
             </h3>
           </div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
-            <Link
-              href="/requests"
-              className="group rounded-2xl border border-white/10 bg-white/[0.035] hover:bg-blue-500/10 hover:border-blue-500/30 p-5 transition"
-            >
-              <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-105 transition">
-                🛒
-              </div>
-
-              <h4 className="font-bold">
-                Make Request
-              </h4>
-
-              <p className="text-xs text-slate-500 mt-1">
-                Tell us what you need
-              </p>
-            </Link>
-
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
             <Link
               href="/orders"
               className="group rounded-2xl border border-white/10 bg-white/[0.035] hover:bg-purple-500/10 hover:border-purple-500/30 p-5 transition"
@@ -894,16 +856,10 @@ export default function DashboardPage() {
                 </h4>
 
                 <p className="text-slate-400 max-w-md mx-auto mt-2 text-sm leading-relaxed">
-                  Your requests will appear here once you submit
-                  them. Start by telling NILETEE what you need.
+                  Your orders will appear here when you have an order
+                  in progress or completed.
                 </p>
 
-                <Link
-                  href="/requests"
-                  className="inline-flex mt-6 px-6 py-3 rounded-xl bg-blue-600 hover:bg-blue-500 font-bold transition"
-                >
-                  Make Your First Request
-                </Link>
               </div>
             ) : (
               <div className="space-y-4">
@@ -1195,28 +1151,6 @@ export default function DashboardPage() {
               </Link>
             </div>
 
-            {/* REQUEST CTA */}
-            <div className="rounded-2xl border border-emerald-500/10 bg-gradient-to-br from-emerald-500/10 to-blue-500/5 p-5">
-              <div className="text-2xl mb-3">
-                🛍️
-              </div>
-
-              <h3 className="font-bold">
-                Need something sourced?
-              </h3>
-
-              <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                Describe what you need and let NILETEE handle the
-                sourcing for you.
-              </p>
-
-              <Link
-                href="/requests"
-                className="inline-flex mt-4 text-sm font-bold text-emerald-300 hover:text-emerald-200"
-              >
-                Start a request →
-              </Link>
-            </div>
           </aside>
         </section>
 
@@ -1239,13 +1173,6 @@ export default function DashboardPage() {
                 className="text-slate-500 hover:text-white transition"
               >
                 Home
-              </Link>
-
-              <Link
-                href="/requests"
-                className="text-slate-500 hover:text-white transition"
-              >
-                Make Request
               </Link>
 
               <Link

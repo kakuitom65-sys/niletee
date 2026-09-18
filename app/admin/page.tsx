@@ -106,12 +106,61 @@ export default function AdminPage() {
   const [editServiceFee, setEditServiceFee] = useState("");
   const [editDeliveryFee, setEditDeliveryFee] = useState("");
   const [editAdminNotes, setEditAdminNotes] = useState("");
+useEffect(() => {
+  let mounted = true;
 
-  useEffect(() => {
-    loadRequests();
-  }, []);
+  async function initializeAdmin() {
+    setLoading(true);
+    setMessage("");
 
-  async function loadRequests() {
+    const {
+      data: { session },
+      error,
+    } = await supabase.auth.getSession();
+
+    if (!mounted) return;
+
+    if (error) {
+      console.error("SESSION ERROR:", error);
+      setMessageType("error");
+      setMessage(`Authentication error: ${error.message}`);
+      setLoading(false);
+      return;
+    }
+
+    if (!session) {
+      window.location.href = "/login";
+      return;
+    }
+
+    console.log("NILETEE SESSION FOUND");
+    console.log("USER ID:", session.user.id);
+    console.log("EMAIL:", session.user.email);
+
+    await loadRequests(session.user.id);
+
+    if (!mounted) return;
+  }
+
+  initializeAdmin();
+
+  const {
+    data: { subscription },
+  } = supabase.auth.onAuthStateChange((event, session) => {
+    console.log("AUTH EVENT:", event);
+
+    if (event === "SIGNED_OUT") {
+      window.location.href = "/login";
+    }
+  });
+
+  return () => {
+    mounted = false;
+    subscription.unsubscribe();
+  };
+}, []);
+
+  async function loadRequests(userId: string) {
     setLoading(true);
     setMessage("");
 
@@ -733,9 +782,18 @@ export default function AdminPage() {
           </div>
 
           <button
-            className="refreshButton"
-            onClick={loadRequests}
-            disabled={loading}
+            onClick={async () => {
+  const {
+    data: { session },
+  } = await supabase.auth.getSession();
+
+  if (!session) {
+    window.location.href = "/login";
+    return;
+  }
+
+  await loadRequests(session.user.id);
+}}
           >
             {loading ? "Refreshing..." : "↻ Refresh Dashboard"}
           </button>
